@@ -5,7 +5,7 @@ const PhotoCard = async ({ photo }) => {
   const { title, url, id } = photo;
 
   return (
-    <Link href={`${id}`} className="group">
+    <Link href={`/photos/${id}`} className="group">
       <Image src={url} alt={title} height={500} width={400} />
 
       <div className="title-container">

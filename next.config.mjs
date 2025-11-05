@@ -5,7 +5,11 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "image.pollinations.ai",
-        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "i.pravatar.cc",
         pathname: "/**",
       },
     ],

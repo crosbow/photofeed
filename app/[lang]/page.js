@@ -15,7 +15,7 @@ export default async function Home() {
   const photos = await fetchPhotos();
 
   return (
-    <div className="img-grid">
+    <div className="img-grid -z-10">
       {photos.map((photo) => (
         <PhotoCard key={photo.id} photo={photo} />
       ))}

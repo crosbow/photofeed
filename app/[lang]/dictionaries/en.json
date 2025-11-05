@@ -1,1 +1,10 @@
-{}
+{
+  "photoDetails": {
+    "views": "Views",
+    "share": "Share",
+    "uploaded": "Uploaded",
+    "followers": "Followers",
+    "follow": "Follow",
+    "save": "Save"
+  }
+}
