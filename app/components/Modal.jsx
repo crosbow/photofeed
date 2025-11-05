@@ -2,20 +2,14 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect, useRef } from "react";
+import { createPortal } from "react-dom";
 
 const Modal = ({ children }) => {
-  const overlay = useRef(null);
-  const wrapper = useRef(null);
+  const modalRef = useRef(null);
   const router = useRouter();
 
   const onDismiss = () => {
     router.back();
-  };
-
-  const handleClose = (e) => {
-    if (e.target == overlay.current || e.target == wrapper.current) {
-      onDismiss();
-    }
   };
 
   const onKeyDown = (e) => {
@@ -25,23 +19,24 @@ const Modal = ({ children }) => {
   };
 
   useEffect(() => {
+    if (!modalRef.current?.open) {
+      modalRef.current?.showModal();
+    }
+
     // Handle Escape
-
     window.addEventListener("keydown", onKeyDown);
-
     return window.removeEventListener("keydown", onkeydown);
   }, []);
 
-  return (
-    <div
-      ref={overlay}
-      onClick={handleClose}
-      className="fixed top-0 left-0 h-screen w-full bg-white/10 flex justify-center items-center z-50"
+  return createPortal(
+    <dialog
+      ref={modalRef}
+      onClose={onDismiss}
+      className="bg-zinc-900 text-white shadow-xl rounded-md"
     >
-      <div ref={wrapper} className="border p-2 rounded-md bg-black ">
-        {children}
-      </div>
-    </div>
+      {children}
+    </dialog>,
+    document.getElementById("modal-root-content")
   );
 };
 export default Modal;

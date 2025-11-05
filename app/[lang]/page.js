@@ -1,4 +1,4 @@
-import PhotoCard from "../components/PhotoCard";
+import PhotoList from "../components/PhotoList";
 
 const fetchPhotos = async () => {
   try {
@@ -14,11 +14,5 @@ const fetchPhotos = async () => {
 export default async function Home() {
   const photos = await fetchPhotos();
 
-  return (
-    <div className="img-grid -z-10">
-      {photos.map((photo) => (
-        <PhotoCard key={photo.id} photo={photo} />
-      ))}
-    </div>
-  );
+  return <PhotoList photos={photos} />;
 }

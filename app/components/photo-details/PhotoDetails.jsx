@@ -4,7 +4,7 @@ import PhotoAction from "@/app/components/photo-details/PhotoAction";
 import getPhotoDetails from "@/app/utils/getPhotoDetails";
 import { notFound } from "next/navigation";
 
-const PhotoDetails = async ({ id, locale }) => {
+const PhotoDetailsContent = async ({ id, locale }) => {
   const photo = await getPhotoDetails(id);
 
   if (!photo.title) {
@@ -21,4 +21,4 @@ const PhotoDetails = async ({ id, locale }) => {
     </div>
   );
 };
-export default PhotoDetails;
+export default PhotoDetailsContent;

@@ -12,6 +12,8 @@ export default function RootLayout({ children }) {
       <body cz-shortcut-listen="true">
         <NavBar />
         {children}
+
+        <div id="modal-root-content" />
       </body>
     </html>
   );
