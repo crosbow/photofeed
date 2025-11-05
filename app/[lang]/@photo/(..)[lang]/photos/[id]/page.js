@@ -1,27 +1,11 @@
 import Modal from "@/app/components/Modal";
-import AuthorInfo from "@/app/components/photo-details/AuthorInfo";
-import MainPhotoInfo from "@/app/components/photo-details/MainPhotoInfo";
-import PhotoAction from "@/app/components/photo-details/PhotoAction";
-import getPhotoDetails from "@/app/utils/getPhotoDetails";
-import { notFound } from "next/navigation";
+import PhotoDetails from "@/app/components/photo-details/PhotoDetails";
 
-const PhotoDetails = async ({ params: { id } }) => {
-  const photo = await getPhotoDetails(id);
-
-  if (!photo.title) {
-    return notFound();
-  }
-
-  const { author, likes } = photo;
+const PhotoDetailsModal = async ({ params: { id, lang } }) => {
   return (
     <Modal>
-      <div className="container my-4 lg:my-8 ">
-        <MainPhotoInfo photo={photo}>
-          <AuthorInfo author={author} />
-          <PhotoAction likes={likes} />
-        </MainPhotoInfo>
-      </div>
+      <PhotoDetails id={id} locale={lang} />
     </Modal>
   );
 };
-export default PhotoDetails;
+export default PhotoDetailsModal;
